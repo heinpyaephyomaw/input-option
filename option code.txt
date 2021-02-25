@@ -1,0 +1,44 @@
+
+let total = [];
+let size = `<input type="Number" class="form-control w-75 size-number">`;
+let color = `<input type="color" class="w-75 h-100" value="#ff0000">`;
+let pattern = `<input type="text" class="form-control w-75">`;
+let title = `<input type="text" class="form-control w-75">`;
+let content = { 'size': size, 'color': color, 'pattern': pattern, 'title': title };
+console.log(content['size']);
+$(".choose-btn").on("click", function() {
+    let res = $("#item-option").children("option:selected").val();
+    if (!total.includes(res)) {
+        total.push(res);
+        let result = content[`${res}`];
+        console.log(result);
+
+        $(".size-option").append(`
+            <div class="col-12">
+            <div>
+                <p class="">${res} Option</p>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="form-group row">
+                <label for="" class="col-sm-4 col-form-label"><span
+                        class="border border-dark px-4 py-1 font-weight-bold">${res}</span></label>
+                <div class="col-sm-8">
+                    ${result}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-9">
+            <div>
+                <button class="btn btn-info py-1" onclick="save(this)">Save</button>
+            </div>
+        </div>
+            `);
+    }
+    // console.log(total);
+});
+// $("#item-option").change(function() {
+//     let option_value = $(this).val();
+//     console.log(option_value);
+// });
